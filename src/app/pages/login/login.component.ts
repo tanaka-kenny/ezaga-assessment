@@ -1,13 +1,25 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  formGroup: FormGroup;
+
+  private router = inject(Router);
+
+  constructor() {
+    this.formGroup = new FormGroup({})
+  }
+
+  login() {
+    this.router.navigate(['home']);
+  }
 
 }
