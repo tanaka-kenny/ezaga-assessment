@@ -21,5 +21,9 @@ export const routes: Routes = [
     {
         'path': 'profile',
         loadComponent: () => import('./pages/profile/profile.component').then(m => m.ProfileComponent)
+    },
+    {
+        path: 'password/recovery',
+        loadChildren: () => import('./pages/password-recovery/password-recovery.component').then(m => m.PasswordRecoveryComponent)
     }
 ];
