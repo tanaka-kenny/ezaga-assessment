@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../shared/service/auth.service';
+import { AuthRequest } from '../../shared/model/auth.model';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +15,18 @@ export class LoginComponent {
   formGroup: FormGroup;
 
   private router = inject(Router);
+  private authService = inject(AuthService);
 
   constructor() {
-    this.formGroup = new FormGroup({})
+    this.formGroup = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required])
+    })
   }
 
   login() {
-    this.router.navigate(['home']);
+    this.authService.login(this.formGroup.value as AuthRequest)
+      .subscribe(authResponse => console.log(authResponse))
   }
 
   passwordRecovery() {
