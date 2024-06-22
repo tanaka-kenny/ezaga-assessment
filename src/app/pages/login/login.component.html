@@ -2,14 +2,8 @@
     <div class="form-container p-3">
         <h1>Student Login</h1>
         <form [formGroup]="formGroup" (ngSubmit)="login()">
-            <div class="mb-3">
-              <label class="form-label">Email address</label>
-              <input type="email" class="form-control" [formControlName]="'email'" >
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Password</label>
-              <input type="password" class="form-control" [formControlName]="'password'">
-            </div>
+              <app-input [formGroup]="formGroup" [control]="'email'" [label]="'Email'" [type]="'email'" />
+              <app-input [formGroup]="formGroup" [control]="'password'" [label]="'Password'" [type]="'password'" />
             <button type="submit" class="btn btn-primary">Login</button>
           </form>
           <div class="d-flex justify-content-end">

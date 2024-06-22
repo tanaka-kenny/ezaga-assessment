@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { User, UserService } from '../../shared/service/user.service';
 import { Router } from '@angular/router';
+import { InputComponent } from '../../shared/component/input/input.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, InputComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })

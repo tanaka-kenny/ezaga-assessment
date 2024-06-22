@@ -3,13 +3,14 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../shared/service/auth.service';
 import { RegisterRequest } from '../../shared/model/auth.model';
+import { InputComponent } from "../../shared/component/input/input.component";
 
 @Component({
-  selector: 'app-register',
-  standalone: true,
-  imports: [RouterModule, ReactiveFormsModule],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+    selector: 'app-register',
+    standalone: true,
+    templateUrl: './register.component.html',
+    styleUrl: './register.component.scss',
+    imports: [RouterModule, ReactiveFormsModule, InputComponent]
 })
 export class RegisterComponent {
 

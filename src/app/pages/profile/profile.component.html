@@ -2,18 +2,9 @@
     <div class="form-container p-3">
         <h1>Profile</h1>
         <form [formGroup]="formGroup" (ngSubmit)="update()">
-            <div class="mb-3">
-                <label class="form-label">First name</label>
-                <input type="text" class="form-control" [formControlName]="'firstname'">
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Surname</label>
-                <input type="text" class="form-control" [formControlName]="'lastname'">
-              </div>
-            <div class="mb-3">
-              <label class="form-label">Email address</label>
-              <input type="email" class="form-control" readonly [formControlName]="'email'">
-            </div>
+          <app-input [formGroup]="formGroup" [control]="'firstname'" [label]="'First name'" />
+            <app-input [formGroup]="formGroup" [control]="'lastname'" [label]="'Surname'" />
+            <app-input [formGroup]="formGroup" [control]="'email'" [label]="'Email'" [type]="'email'" [readOnly]="true" />
             <button type="submit" class="btn btn-primary">Update</button>
           </form>
     </div>
