@@ -29,10 +29,7 @@ export class RegisterComponent {
 
   register() {
     this.authService.register(this.formGroup.value as RegisterRequest)
-      .subscribe(authResponse => {
-        console.log(authResponse);
-        
-      });
+      .subscribe(() => this.router.navigate(['home']));
   }
 
 }

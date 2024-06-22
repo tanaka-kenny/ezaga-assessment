@@ -26,7 +26,7 @@ export class LoginComponent {
 
   login() {
     this.authService.login(this.formGroup.value as AuthRequest)
-      .subscribe(authResponse => console.log(authResponse))
+      .subscribe(() => this.router.navigate(['home']))
   }
 
   passwordRecovery() {
