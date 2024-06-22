@@ -1,6 +1,6 @@
 <div class="container">
     <div class="content p-3">
-        <h1>Welcome Tanaka</h1>
+        <h1 *ngIf="user">Welcome {{user.firstname}}</h1>
         <button class="btn btn-primary mb-3" (click)="viewProfile()">View profile</button>
         <button class="btn btn-danger">Logout</button>
     </div>

@@ -8,6 +8,9 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         if (event.body?.access_token) {
             localStorage.setItem('access_token', event.body.access_token)
         }
+        if (event.body?.email) {
+          localStorage.setItem('email', event.body.email)
+      }
       }
       return event;
     }),
