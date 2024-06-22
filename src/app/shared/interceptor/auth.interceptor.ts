@@ -1,15 +1,16 @@
 import { HttpErrorResponse, HttpEvent, HttpInterceptorFn, HttpResponse } from '@angular/common/http';
 import { catchError, map, throwError } from 'rxjs';
+import { setAccessToken, setEmail } from '../utils/utils';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     map((event: HttpEvent<any>) => {
       if (event instanceof HttpResponse) {
         if (event.body?.access_token) {
-            localStorage.setItem('access_token', event.body.access_token)
+            setAccessToken(event.body.access_token);
         }
         if (event.body?.email) {
-          localStorage.setItem('email', event.body.email)
+          setEmail(event.body.email)
       }
       }
       return event;
