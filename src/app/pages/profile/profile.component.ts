@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { User, UserService } from '../../shared/service/user.service';
 import { Router } from '@angular/router';
 import { InputComponent } from '../../shared/component/input/input.component';
+import { ToasterService } from '../../shared/service/toaster.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,8 @@ export class ProfileComponent implements OnInit{
 
   constructor(
     private userService: UserService,
-    private router: Router) {
+    private router: Router,
+    private toasterService: ToasterService) {
     this.formGroup = new FormGroup({
       firstname: new FormControl('', [Validators.required]),
       lastname: new FormControl('', [Validators.required]),
@@ -40,7 +42,10 @@ export class ProfileComponent implements OnInit{
 
   update() {
     this.userService.updateUser(this.formGroup.value as User)
-      .subscribe(() => this.router.navigate(['home']));
+      .subscribe(() => {
+        this.router.navigate(['home'])
+        this.toasterService.showSuccess('Profile update successful!', '');
+      });
   }
 
 }

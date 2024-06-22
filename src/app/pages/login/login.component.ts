@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../shared/service/auth.service';
 import { AuthRequest } from '../../shared/model/auth.model';
 import { InputComponent } from '../../shared/component/input/input.component';
+import { ToasterService } from '../../shared/service/toaster.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent {
 
   private router = inject(Router);
   private authService = inject(AuthService);
+  private toasterService = inject(ToasterService);
 
   constructor() {
     this.formGroup = new FormGroup({
@@ -27,7 +29,10 @@ export class LoginComponent {
 
   login() {
     this.authService.login(this.formGroup.value as AuthRequest)
-      .subscribe(() => this.router.navigate(['home']))
+      .subscribe(() => {
+        this.router.navigate(['home']);
+        this.toasterService.showSuccess('Login successful!', '');
+      })
   }
 
   passwordRecovery() {

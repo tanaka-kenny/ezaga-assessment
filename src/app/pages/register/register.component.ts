@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../shared/service/auth.service';
 import { RegisterRequest } from '../../shared/model/auth.model';
 import { InputComponent } from "../../shared/component/input/input.component";
+import { ToasterService } from '../../shared/service/toaster.service';
 
 @Component({
     selector: 'app-register',
@@ -18,6 +19,7 @@ export class RegisterComponent {
 
   private router = inject(Router);
   private authService = inject(AuthService);
+  private toasterService = inject(ToasterService)
 
   constructor() {
     this.formGroup = new FormGroup({
@@ -30,7 +32,10 @@ export class RegisterComponent {
 
   register() {
     this.authService.register(this.formGroup.value as RegisterRequest)
-      .subscribe(() => this.router.navigate(['home']));
+      .subscribe(() => {
+        this.router.navigate(['home'])
+        this.toasterService.showSuccess('Registration successful!', '');
+      });
   }
 
 }
