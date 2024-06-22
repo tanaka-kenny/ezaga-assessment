@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpEvent, HttpInterceptorFn, HttpResponse } from '@angular/common/http';
 import { catchError, map, throwError } from 'rxjs';
-import { setAccessToken, setEmail } from '../utils/utils';
+import { setAccessToken, setEmail } from '../utils/local-storage.utils';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
