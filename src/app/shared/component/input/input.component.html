@@ -1,4 +1,12 @@
 <div class="mb-3" [formGroup]="formGroup">
     <label class="form-label">{{label}}</label>
     <input [type]="type" class="form-control" [formControlName]="control" [readonly]="readOnly">
+
+    <ng-container
+        *ngIf="formGroupControls[control]['invalid'] && formGroupControls[control]['dirty']  && formGroupControls[control]['touched']">
+        <div class="alert alert-danger" role="alert"
+            *ngFor="let error of formGroupControls[control]['errors'] | keyvalue">
+            {{ errorMessages[error.key] }}
+        </div>
+    </ng-container>
   </div>
