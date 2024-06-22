@@ -5,4 +5,4 @@ export const removeEmail = () => localStorage.removeItem('email');
 
 export const setAccessToken = (token: string) => localStorage.setItem('access_token', token);
 export const removeAccessToken = () => localStorage.removeItem('access_token')
-
+export const getAccessToken = () => localStorage.getItem('access_token');

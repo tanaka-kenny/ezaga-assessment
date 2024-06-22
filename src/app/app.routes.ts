@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './shared/guard/auth.guard';
 
 export const routes: Routes = [
     {
@@ -16,14 +17,21 @@ export const routes: Routes = [
     },
     {
         'path': 'home',
-        loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
+        loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
+        canActivate: [authGuard]
     },
     {
         'path': 'profile',
-        loadComponent: () => import('./pages/profile/profile.component').then(m => m.ProfileComponent)
+        loadComponent: () => import('./pages/profile/profile.component').then(m => m.ProfileComponent),
+        canActivate: [authGuard]
     },
     {
         path: 'password/recovery',
         loadChildren: () => import('./pages/password-recovery/password-recovery.component').then(m => m.PasswordRecoveryComponent)
+    },
+    {
+        path: '**',
+        redirectTo: 'home',
+        pathMatch: 'full'
     }
 ];
