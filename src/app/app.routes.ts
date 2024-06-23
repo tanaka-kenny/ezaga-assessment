@@ -27,7 +27,7 @@ export const routes: Routes = [
     },
     {
         path: 'password/recovery',
-        loadChildren: () => import('./pages/password-recovery/password-recovery.component').then(m => m.PasswordRecoveryComponent)
+        loadComponent: () => import('./pages/password-recovery/password-recovery.component').then(m => m.PasswordRecoveryComponent)
     },
     {
         path: '**',

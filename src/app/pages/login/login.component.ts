@@ -35,8 +35,4 @@ export class LoginComponent {
       })
   }
 
-  passwordRecovery() {
-    this.router.navigate(['password', 'recovery'])
-  }
-
 }
