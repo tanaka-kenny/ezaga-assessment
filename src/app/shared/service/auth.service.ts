@@ -33,4 +33,12 @@ export class AuthService {
         this.router.navigate(['login'])
       });
   }
+
+  public requestConfirmationCode(email: string) {
+    return this.http.get(this.AUTH_ROOT + 'forgot-password/' + email)
+  }
+
+  public verifyConfirmationCode(code: number, request: AuthRequest) {
+    return this.http.post(this.AUTH_ROOT + 'verify-code/' + code, request);
+  }
 }
